@@ -517,18 +517,20 @@ export default class Delimiter {
                 ),
             );
         }
-         if (this.availableDelimiterStyles.includes('line') && this.availableLineWidths.length > 1) {
-            const lineWidths = this.availableLineWidths.map((width) =>
-                this._createSetting(
-                    getLineWidthIcon(width),
-                    this._getFormattedLabel(width, 'Line ', '%'),
-                    () => this._setLine(width),
-                    this.currentDelimiterStyle === 'line' &&
+        if (this.availableDelimiterStyles.includes('line')) {
+            if(this.availableLineWidths.length > 1) {
+                const lineWidths = this.availableLineWidths.map((width) =>
+                    this._createSetting(
+                        getLineWidthIcon(width),
+                        this._getFormattedLabel(width, 'Line ', '%'),
+                        () => this._setLine(width),
+                        this.currentDelimiterStyle === 'line' &&
                         width === this.currentLineWidth,
-                    'line',
-                ),
-            );
-            settings.push(...lineWidths);
+                        'line',
+                    ),
+                );
+                settings.push(...lineWidths);
+            }
 
             if (this.currentDelimiterStyle === 'line' && this.availableLineThickness.length > 1) {
                 const lineThickness = this.availableLineThickness.map(
