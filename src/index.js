@@ -517,7 +517,7 @@ export default class Delimiter {
                 ),
             );
         }
-        if (this.availableDelimiterStyles.includes('line')) {
+         if (this.availableDelimiterStyles.includes('line') && this.availableLineWidths.length > 1) {
             const lineWidths = this.availableLineWidths.map((width) =>
                 this._createSetting(
                     getLineWidthIcon(width),
@@ -530,7 +530,7 @@ export default class Delimiter {
             );
             settings.push(...lineWidths);
 
-            if (this.currentDelimiterStyle === 'line') {
+            if (this.currentDelimiterStyle === 'line' && this.availableLineThickness.length > 1) {
                 const lineThickness = this.availableLineThickness.map(
                     (thickness) =>
                         this._createSetting(
